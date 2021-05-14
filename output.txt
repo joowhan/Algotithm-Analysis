@@ -1,0 +1,8 @@
+
+Input				DP(value/time)				Greedy(value/time)				B.B(value/time)
+100				14900/17.772ms				14885/0.06ms				184000/3.522ms				
+Input				DP(value/time)				Greedy(value/time)				B.B(value/time)
+1000				144610/1553.13ms				144222/2.26ms				9400000/459.098ms				
+Input				DP(value/time)				Greedy(value/time)				B.B(value/time)
+2000				323271/5982.81ms				291655/8.708ms				23760000/1415.24ms				
+Input				DP(value/time)				Greedy(value/time)				B.B(value/time)
