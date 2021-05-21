@@ -108,7 +108,7 @@ int main(){
 
     #else //consider sorting version
 
-    ifstream fin ("hw5_.data2.txt");
+    ifstream fin ("hw5_data2.txt");
     //ifstream fin ("hw5_data.txt");
     string line;
     string val;
