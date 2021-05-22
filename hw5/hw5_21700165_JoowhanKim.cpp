@@ -43,21 +43,24 @@ using namespace std;
 void Display_AdjList(char * node, vector<char> adj[], int size);
 void Transpose_graph(char * node, vector<char> adj[], vector<char> t_adj[], int size);
 void Initialize(char * node, vector<char> adj[], vector<char> t_adj[], int size);
+
 bool comp(string s1, string s2){
-	return s1 < s2;	//string 사전 역순 
+	return s1 < s2;	//compare lines for sorting
 }
 int main(){
     /*
     ** My Logic ** 
     1. Read file and make a list using vector
         - read first line and check the size
-        - node sort and adj[i].front() <- same with sorting node
+        - read other lines and sorting
     2. Make a linked list and then transpose it. 
     3. Display transpose graph 
 
     ** function
     - Display_list
     - Transpose_adjList
+    - Initialize
+    - comp
     */
     #if 0 // Don't consider sorting
     //ifstream fin ("hw5_.data2.txt");
@@ -108,13 +111,14 @@ int main(){
 
     #else //consider sorting version
 
-    ifstream fin ("hw5_data2.txt");
-    //ifstream fin ("hw5_data.txt");
+    //ifstream fin ("hw5_data2.txt");
+    ifstream fin ("hw5_data.txt");
     string line;
-    string val;
+    //string val;
     char link;
     //istringstream ss(line);
     int z =0;
+    //read first line and check the number of nodes
     getline(fin, line);
     line.erase(remove(line.begin(), line.end(), '\t'), line.end());
     line.erase(remove(line.begin(), line.end(), ' '), line.end());
@@ -125,6 +129,7 @@ int main(){
         cout << "Too big."<<endl;
         exit(0); 
     }
+    //store the nodes
     char * node = new char[size];
     for(int i=0;i<size;i++){
         node[i] = 'A' + i;
@@ -132,11 +137,12 @@ int main(){
         //cout << line[i] <<endl;
     }
     vector<char> adj[size];
-    vector<char> t_adj[size];
+    vector<char> t_adj[size]; // transpose
     int vertex_id = 0; //indicate which node
     //input sorting algorithm here.
     string * alpha = new string[size];
-
+    
+    //store all lines in alpha to sort all lines in alphabetical order
     while(std::getline(fin, line)){
         line.erase(remove(line.begin(), line.end(), '\t'), line.end());
         line.erase(remove(line.begin(), line.end(), ' '), line.end());
@@ -146,7 +152,7 @@ int main(){
     }
     //sorting in alphabetical order
     sort(alpha, alpha+size, comp);
-
+    //Make adjacency list of graph
     for(int i=0;i<size;i++){
         for(int j=1;j<alpha[i].size();j++){ // except node, input the linked vertexs
             link = (char)alpha[i][j]; // ex) B 1 0 1 0 0 1
