@@ -144,7 +144,7 @@ int main(){
         z++;
 
     }
-
+    //sorting in alphabetical order
     sort(alpha, alpha+size, comp);
 
     for(int i=0;i<size;i++){
